@@ -2,4 +2,6 @@
 require 'pry'
 
 require_relative "rick_and_morty_cli_project/version"
-binding.pry
+
+require "bundler"
+Bundler.require
