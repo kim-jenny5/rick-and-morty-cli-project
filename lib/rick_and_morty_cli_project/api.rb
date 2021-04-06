@@ -1,8 +1,5 @@
 class API
     def self.extracting_data
-        #You need to figure out how to use this one gigantic API!!!!
-        # response = RestClient.get('https://rickandmortyapi.com/api')
-
         url = "https://rickandmortyapi.com/api/character"
 
 
