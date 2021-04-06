@@ -1,3 +1,3 @@
-class RickAndMorty
+class Characters
 
 end
