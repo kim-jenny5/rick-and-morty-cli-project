@@ -2,15 +2,11 @@ class API
     def self.extracting_data
         url = "https://rickandmortyapi.com/api/character"
 
-
         response = RestClient.get(url)
         # response = RestClient.get('https://rickandmortyapi.com/api/character?page=2')        
         data = JSON.parse(response.body)
-        page_count = data["info"]["pages"]
-
-        binding.pry
+        # page_count = data["info"]["pages"]
     end
-
     # def self.paginating
     # end
 end

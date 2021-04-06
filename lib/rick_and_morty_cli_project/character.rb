@@ -1,10 +1,13 @@
 class Character
-    attr_accessor :name, :species, :location#, :image, :episode
+    attr_accessor :name, :status, :species, :type, :origin, :location
 
     #will comment this out later
-    def initialize(name, species, location)
+    def initialize(name, status, species, type, origin, location)
         @name = name
+        @status = status
         @species = species
+        @type = type
+        @origin = origin
         @location = location
     end
 
