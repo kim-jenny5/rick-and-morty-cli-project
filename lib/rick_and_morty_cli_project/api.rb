@@ -23,15 +23,19 @@ class API
     
         # @@all_pages
         individual_data = nil
+        # characters = nil
 
-        @@all_pages.map do |url|
+        @@all_pages.each do |url|
             individual_response = RestClient.get(url)
-            individual_data = JSON.parse(individual_response.body)
+            individual_data = JSON.parse(individual_response.body)["results"]
+            binding.pry
+            # individual_data["results"]
         end
 
-        individual_data
+        characters = individual_data
+        # individual_data
         #I DON'T UNDERSTAND WHY THIS IS RETURNING THE LAST PAGE ONLY
-        binding.pry
+        # binding.pry
 
         # url.each do |x|
         #     x += 1
