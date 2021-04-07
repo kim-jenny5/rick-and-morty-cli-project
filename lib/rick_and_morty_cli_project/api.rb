@@ -54,10 +54,6 @@ class API
         #     responses = RestClient.get(depagination)
         #     datas = JSON.parse(responses.body)
     end
-
-    def self.all_pages
-        @all_pages
-    end
 end
 
 #data["results"].select {|character| character["name"] == "Beth Smith"}
