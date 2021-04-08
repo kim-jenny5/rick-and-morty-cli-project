@@ -2,9 +2,61 @@
 
 require_relative '../lib/environment.rb'
 
+#------playing with colorize gem-----------
+# puts String.colors
+# puts "Jenny".colorize(:black)
+# puts "Jenny".colorize(:light_black)
+# puts "Jenny".colorize(:red)
+# puts "Jenny".colorize(:light_red)
+# puts "Jenny".colorize(:green)
+# puts "Jenny".colorize(:light_green)
+# puts "Jenny".colorize(:yellow)
+# puts "Jenny".colorize(:light_yellow)
+# puts "Jenny".colorize(:blue)
+# puts "Jenny".colorize(:light_blue)
+# puts "Jenny".colorize(:magenta)
+# puts "Jenny".colorize(:light_magenta)
+# puts "Jenny".colorize(:cyan)
+# puts "Jenny".colorize(:light_cyan)
+# puts "Jenny".colorize(:white)
+# puts "Jenny".colorize(:light_white)
+
+# puts String.modes
+# puts "Jenny".bold
+# puts "Jenny".italic
+# puts "Jenny".underline
+# puts "Jenny".blink
+# puts "Jenny".swap --> GOOD 
+# puts "Jenny".hide
+
+# puts String.color_samples
+
+# rick = "rick"
+# puts "#{(rick.upcase).bold.colorize(:green)}"
+
+# rick = "RICK".upcase.bold.colorize(:green)
+# puts rick
+
+# name = "jenny"
+# puts "#{(name.upcase).blink}"
+
+# puts "Jenny".bold.colorize(:light_red)
+#-------------------------------------------
+
+puts
 puts "Hello! Thank you for coming to Jenny's CLI Project 😊"
 sleep(2)
-puts "I've extracted lots of data, so please wait while the program loads... 😅"
+puts "We're fetching lots of data, so please wait while the program loads... 😅"
+puts
+sleep(1.5)
+puts "🌎"
+sleep(0.5)
+puts "    🛸"
+sleep(0.5)
+puts "        👽"
+sleep(0.5)
+puts "            💫"
+puts
 
 API.extracting_data
 CLI.new.starts
