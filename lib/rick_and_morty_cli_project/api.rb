@@ -25,6 +25,7 @@ class API
 
         characters = all_data.flatten
 
+        binding.pry
         #may not be needed in API class
         characters.each do |character|
             character

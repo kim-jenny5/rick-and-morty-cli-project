@@ -1,14 +1,12 @@
 class Character
-    attr_accessor :name, :status, :species, :type, :origin, :location
-
+    attr_accessor :name, :species, :type, :location, :episode
     #will comment this out later
-    def initialize(name, status, species, type, origin, location)
+    def initialize(name, species, type, location, episode)
         @name = name
-        @status = status
         @species = species
         @type = type
-        @origin = origin
         @location = location
+        @episode = episode
     end
 
     #should be done this way, will uncomment out later
@@ -17,4 +15,11 @@ class Character
     #         self.send(("#{key}="), value)
     #     end
     # end
+
+    # if @type == ""
+    # end
+    # later use REJECT for ommitting this attributes for certain characters
+
+    # characters.select {|character| character["name"].include?("Morty")}
+    # This gets all Morty characters
 end
