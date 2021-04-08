@@ -5,7 +5,6 @@ class CLI
 
     @@morty_name = "Morty"
     @@morty = "#{@@morty_name}".upcase.bold.colorize(:green)
-    # "#{(rick.upcase).bold.colorize(:green)}"
 
     def starts
         puts "#{@@rick}"
@@ -13,12 +12,14 @@ class CLI
         sleep(3)
 
         puts "Let's get schwifty and tell us your name dawg!"
+        puts
         input = user_input
 
         greets(input)
     end
 
     def user_input
+        puts "YOU".colorize(:green)
         gets.strip
     end
 
@@ -45,9 +46,11 @@ class CLI
         puts "2. Let's have some fun! 🤪"
         puts "3. Do you wanna develop an app??? 👩🏻‍💻"
         puts "4. Nah, I want to leave. I don't even like Rick and Morty."
+        puts 
 
         selection = user_input
         if selection.include?("4")
+            sleep(1)
             leaves
         end
     end
@@ -64,14 +67,16 @@ class CLI
         puts
         num = rand(1..3)
         if num == 1
-            puts "You left Rick and Morty to go watch Bob's Burgers for some wholesome family fun."
+            puts "You left to go watch Bob's Burgers for some wholesome family fun."
             puts
         elsif num == 2
-            puts "You left Rick and Morty to go watch Family Guy for some asinine fun."
+            puts "You left to go watch Family Guy for some asinine fun."
             puts
         elsif num == 3
-            puts "You left Rick and Morty to go watch Bojack Horseman to feel relatability from a drunk and drugged up cartoon horse."
+            puts "You left to go watch Bojack Horseman to feel relatability from a drunk, washed-up cartoon horse."
             puts
         end
+        sleep(2)
+        puts "Bye bye!"
     end
 end
