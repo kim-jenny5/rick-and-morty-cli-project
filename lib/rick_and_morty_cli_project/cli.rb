@@ -29,14 +29,14 @@ class CLI
         puts
         puts "#{@@rick}"
         puts "#{(name.upcase).italic}!!! So what do you wanna do today? Huh? Whadya wanna do?? Don't be like Morty and choose decisively!"
-        sleep(4)
+        sleep(3.5)
         
         puts
         puts "#{@@morty}"
         puts "Aw jeez Rick... Sorry about him man."
-        sleep(2)
+        sleep(2.5)
         puts "Whenever you're ready, tell us the number you want to see from the menu below!"
-        sleep(3)
+        sleep(2.5)
 
         menu
     end
@@ -79,15 +79,18 @@ class CLI
         puts "#{@@rick}"
         puts "And awayyyyyyy we goooooo!"
         puts
+
+        character_info
     end
 
     def character_info
         puts "Which character do you wanna know more about?"
         puts "Enter a specific name or 'list characters' for a list of some random characters."
-       
+        puts
+
         input = user_input
 
-        # if input == 'list characters'
+        # if input == "list characters"
         # end
     end
 
