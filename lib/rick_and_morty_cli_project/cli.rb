@@ -51,6 +51,10 @@ class CLI
         selection = user_input
         if selection.include?("1")
             character_info
+        elsif selection.include?("2")
+            fun
+        elsif selection.include?("3")
+            app
         elsif selection.include?("4")
             sleep(1)
             leaves
