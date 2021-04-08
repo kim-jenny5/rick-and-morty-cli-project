@@ -31,7 +31,7 @@ class CLI
         puts "#{(name.upcase).italic}!!! So what do you wanna do today? Huh? Whadya wanna do??"
         sleep(1)
         puts "Don't be like Morty and choose decisively!"
-        sleep(3.5)
+        sleep(3)
         
         puts
         puts "#{@@morty}"
@@ -69,7 +69,7 @@ class CLI
         sleep(1)
         puts
         puts "#{@@rick}"
-        puts "Bet Morty stalks Jessica on da socials. 👀"
+        puts "Bet Morty stalks Jessica on da socials 👀"
         
         sleep(1.5)
         puts
@@ -92,17 +92,29 @@ class CLI
 
         input = user_input
 
-        API.set_up
-        binding.pry
+        if input == "list characters"
+            random_list = []
 
-        # if input == "list characters"
-        #     random_list = []
+            5.times {random_list << rand(Character.all.length)}
+            random_list.map do |index|
+                attributes = Character.all[index]
+                puts "Name: #{attributes.name}"
+                # puts "Species: #{attributes.species}"
+                # puts "Type: #{attributes.type}"
+                # puts "Current location: #{attributes.location}"
+                # puts "Episode count: #{attributes.episode.count}"
 
-            # random_list << 5.times {rand(0..672)}
-
-            # Character.all.map do |x|
-            # end
-        # end
+                # Character.all[index].each do |attributes|
+                #     puts "Name: #{attributes.name}"
+                #     puts "Species: #{attributes.species}"
+                #     puts "Type: #{attributes.type}"
+                #     puts "Current location: #{attributes.location}"
+                #     puts "Episode count: #{atttributes.episode.count}"
+                # end
+            end
+            random_list
+            binding.pry
+        end
     end
 
     def fun
