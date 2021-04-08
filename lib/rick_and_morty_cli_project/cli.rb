@@ -92,6 +92,8 @@ class CLI
 
         input = user_input
 
+        API.set_up
+        binding.pry
 
         # if input == "list characters"
         #     random_list = []

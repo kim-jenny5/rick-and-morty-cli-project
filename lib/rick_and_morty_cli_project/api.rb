@@ -2,7 +2,7 @@ class API
 
     @@all_pages = []
 
-    def self.set_up
+    def self.extracting_data
         base_url = "https://rickandmortyapi.com/api/character"
         response = RestClient.get(base_url)
         data = JSON.parse(response)
@@ -15,11 +15,7 @@ class API
             page_number += 1
             @@all_pages << "#{base_url}?page=#{page_number}"
         end
-
-        self.extracting_data
-    end
-
-    def self.extracting_data
+    
         all_data = []
 
         @@all_pages.each do |url|
@@ -28,8 +24,6 @@ class API
         end
 
         characters = all_data.flatten
-
-        # binding.pry
 
         characters.each do |character|
             Character.new(character["name"], character["species"], character["type"], character["location"]["name"], character["episode"])
