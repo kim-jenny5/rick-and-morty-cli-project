@@ -14,7 +14,7 @@ class CLI
     
     def starts
         puts "#{@@rick}"
-        puts "Burrrp. Oops. I mean, yo what's up? Welcome to the world of Rick and Mortyyyyyyyyy!"
+        puts "Burrrp. Oops. I mean, yo what's up? Welcome to the world of Rick and Mortyyyyyy!"
         sleep(3)
 
         puts "Let's get schwifty and tell us your name dawg!"
@@ -28,7 +28,9 @@ class CLI
         sleep(1)
         puts
         puts "#{@@rick}"
-        puts "#{(name.upcase).italic}!!! So what do you wanna do today? Huh? Whadya wanna do?? Don't be like Morty and choose decisively!"
+        puts "#{(name.upcase).italic}!!! So what do you wanna do today? Huh? Whadya wanna do??"
+        sleep(1)
+        puts "Don't be like Morty and choose decisively!"
         sleep(3.5)
         
         puts
@@ -67,7 +69,7 @@ class CLI
         sleep(1)
         puts
         puts "#{@@rick}"
-        puts "Bet Morty stalks Jessica on da socials."
+        puts "Bet Morty stalks Jessica on da socials. 👀"
         
         sleep(1.5)
         puts
@@ -90,7 +92,14 @@ class CLI
 
         input = user_input
 
+
         # if input == "list characters"
+        #     random_list = []
+
+            # random_list << 5.times {rand(0..672)}
+
+            # Character.all.map do |x|
+            # end
         # end
     end
 

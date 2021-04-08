@@ -58,5 +58,5 @@ sleep(0.5)
 puts "            💫"
 puts
 
-API.extracting_data
+API.set_up
 CLI.new.starts
