@@ -3,7 +3,7 @@ class API
     @@all_pages = []
 
     def self.extracting_data
-        base_url = "https://rickandmortyapi.com/api/character?page="
+        base_url = "https://rickandmortyapi.com/api/character"
         response = RestClient.get(base_url)
         data = JSON.parse(response)
 
@@ -13,7 +13,7 @@ class API
         page_number = 0
         until page_number == total_pages
             page_number += 1
-            @@all_pages << "#{base_url}#{page_number}"
+            @@all_pages << "#{base_url}?page=#{page_number}"
         end
     
         all_data = []

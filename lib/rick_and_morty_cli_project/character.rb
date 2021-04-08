@@ -4,7 +4,7 @@ class Character
     @@all = []
 
     #I want to metaprogram this later and refactor
-    def initialize(name:, species:, type:, location:, episode:)
+    def initialize(name, species, type, location, episode)
         @name = name
         @species = species
         @type = type

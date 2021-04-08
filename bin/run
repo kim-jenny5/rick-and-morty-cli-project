@@ -2,4 +2,9 @@
 
 require_relative '../lib/environment.rb'
 
+puts "Hello! Thank you for coming to Jenny's CLI Project 😊"
+sleep(2)
+puts "I've extracted lots of data, so please wait while the program loads... 😅"
+
 API.extracting_data
+CLI.new.starts
