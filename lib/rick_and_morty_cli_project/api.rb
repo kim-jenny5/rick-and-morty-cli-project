@@ -23,7 +23,12 @@ class API
             all_data << JSON.parse(individual_response)["results"]
         end
 
-        characters = all_data_data
+        characters = all_data.flatten
+
+        #may not be needed in API class
+        characters.each do |character|
+            character
+        end
     end
 end
 
