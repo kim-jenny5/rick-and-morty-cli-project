@@ -25,10 +25,10 @@ class API
 
         characters = all_data.flatten
 
-        binding.pry
         #may not be needed in API class
         characters.each do |character|
-            character
+            Character.new(character["name"], character["species"], character["type"], character["location"]["name"], character["episode"])
+            binding.pry
         end
     end
 end

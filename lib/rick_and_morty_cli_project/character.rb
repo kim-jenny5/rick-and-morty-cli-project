@@ -1,5 +1,8 @@
 class Character
     attr_accessor :name, :species, :type, :location, :episode
+
+    @@all = []
+
     #will comment this out later
     def initialize(name, species, type, location, episode)
         @name = name
@@ -7,6 +10,15 @@ class Character
         @type = type
         @location = location
         @episode = episode
+        save
+    end
+
+    def save
+        @@all << self
+    end
+
+    def self.all
+      @@all
     end
 
     #should be done this way, will uncomment out later
