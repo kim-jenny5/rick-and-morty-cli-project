@@ -13,9 +13,9 @@ class CLI
 
         puts "Let's get schwifty and tell us your name dawg!"
         puts
-        input = user_input
+        name = user_input
 
-        greets(input)
+        greets(name)
     end
 
     def user_input
@@ -49,10 +49,45 @@ class CLI
         puts 
 
         selection = user_input
-        if selection.include?("4")
+        if selection.include?("1")
+            character_info
+        elsif selection.include?("4")
             sleep(1)
             leaves
         end
+    end
+
+    def character_info_prelude
+        puts "#{@@rick}"
+        puts "Bet Morty stalks Jessica on da socials."
+        sleep(1)
+
+        puts "#{@@morty}"
+        puts "#{rick_name.upcase.bold}!"
+        sleep(1)
+
+        puts "#{@@rick}"
+        puts "And awayyyyyyy we goooooo!"
+        sleep(2)
+
+        puts "."
+        puts "."
+        puts "."
+        sleep(1)
+
+        puts "#{@@morty}"
+        puts "*sighs* Heyyo. Morty here. I'll be taking over now. Rick's too drunk. Again... 😒"
+        character_info
+    end
+
+    def character_info(input)
+        input = user_input
+        puts "Which character do you wanna know more about?"
+        puts "Enter a specific name or 'list characters' for a list of some random characters."
+        input
+        # if input == 'list characters'
+
+        # end
     end
 
     def leaves
@@ -77,6 +112,5 @@ class CLI
             puts
         end
         sleep(2)
-        puts "Bye bye!"
     end
 end
