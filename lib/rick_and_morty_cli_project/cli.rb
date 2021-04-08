@@ -6,6 +6,12 @@ class CLI
     @@morty_name = "Morty"
     @@morty = "#{@@morty_name}".upcase.bold.colorize(:green)
 
+    def user_input
+        sleep(0.5)
+        puts "YOU".colorize(:green)
+        gets.strip
+    end
+    
     def starts
         puts "#{@@rick}"
         puts "Burrrp. Oops. I mean, yo what's up? Welcome to the world of Rick and Mortyyyyyyyyy!"
@@ -13,14 +19,9 @@ class CLI
 
         puts "Let's get schwifty and tell us your name dawg!"
         puts
+
         name = user_input
-
         greets(name)
-    end
-
-    def user_input
-        puts "YOU".colorize(:green)
-        gets.strip
     end
 
     def greets(name)
@@ -28,14 +29,14 @@ class CLI
         puts
         puts "#{@@rick}"
         puts "#{(name.upcase).italic}!!! So what do you wanna do today? Huh? Whadya wanna do?? Don't be like Morty and choose decisively!"
-        sleep(5)
+        sleep(4)
         
         puts
         puts "#{@@morty}"
         puts "Aw jeez Rick... Sorry about him man."
         sleep(2)
         puts "Whenever you're ready, tell us the number you want to see from the menu below!"
-        sleep(2)
+        sleep(3)
 
         menu
     end
@@ -49,8 +50,9 @@ class CLI
         puts 
 
         selection = user_input
+
         if selection.include?("1")
-            character_info
+            character_info_prelude
         elsif selection.include?("2")
             fun
         elsif selection.include?("3")
@@ -67,7 +69,7 @@ class CLI
         sleep(1)
 
         puts "#{@@morty}"
-        puts "#{rick_name.upcase.bold}!"
+        puts "#{@@rick_name}!"
         sleep(1)
 
         puts "#{@@rick}"
@@ -81,7 +83,9 @@ class CLI
 
         puts "#{@@morty}"
         puts "*sighs* Heyyo. Morty here. I'll be taking over now. Rick's too drunk. Again... 😒"
-        character_info
+        
+        input = user_input
+        character_info(input)
     end
 
     def character_info(input)
@@ -92,6 +96,12 @@ class CLI
         # if input == 'list characters'
 
         # end
+    end
+
+    def fun
+    end
+
+    def app
     end
 
     def leaves
