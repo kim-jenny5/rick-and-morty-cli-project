@@ -35,5 +35,37 @@ class CLI
         sleep(2)
         puts "Whenever you're ready, tell us the number you want to see from the menu below!"
         sleep(3)
+
+        menu
+    end
+
+    def menu
+        puts "1. Let's stalk some characters! 😈"
+        puts "2. Let's have some fun! 🤪"
+        puts "3. Do you wanna develop an app??? 👩🏻‍💻"
+        puts "4. Nah, I want to leave. I don't even like Rick and Morty."
+
+        selection = user_input
+        if selection.includes?("4")
+            leaves
+        end
+    end
+
+    def leaves
+        puts "#{@@rick}"
+        puts "Whatever you say, 'Stone Cold' Steve Austin."
+        sleep(2)
+        randomizer
+    end
+
+    def randomizer
+        num = rand(1..3)
+        if num == 1
+            puts "You left Rick and Morty to go watch Bob's Burgers for some wholesome family fun."
+        elsif num == 2
+            puts "You left Rick and Morty to go watch Family Guy for some asinine fun."
+        elsif num == 3
+            puts "You left Rick and Morty to go watch Bojack Horseman to feel relatability from a drunk and drugged up cartoon horse."        
+        end
     end
 end
