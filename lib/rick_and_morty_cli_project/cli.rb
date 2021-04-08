@@ -64,37 +64,30 @@ class CLI
     end
 
     def character_info_prelude
+        sleep(1)
+        puts
         puts "#{@@rick}"
         puts "Bet Morty stalks Jessica on da socials."
-        sleep(1)
-
+        
+        sleep(1.5)
+        puts
         puts "#{@@morty}"
-        puts "#{@@rick_name}!"
+        puts "#{@@rick_name}!".bold
+        
         sleep(1)
-
+        puts
         puts "#{@@rick}"
         puts "And awayyyyyyy we goooooo!"
-        sleep(2)
-
-        puts "."
-        puts "."
-        puts "."
-        sleep(1)
-
-        puts "#{@@morty}"
-        puts "*sighs* Heyyo. Morty here. I'll be taking over now. Rick's too drunk. Again... 😒"
-        
-        input = user_input
-        character_info(input)
+        puts
     end
 
-    def character_info(input)
-        input = user_input
+    def character_info
         puts "Which character do you wanna know more about?"
         puts "Enter a specific name or 'list characters' for a list of some random characters."
-        input
-        # if input == 'list characters'
+       
+        input = user_input
 
+        # if input == 'list characters'
         # end
     end
 
