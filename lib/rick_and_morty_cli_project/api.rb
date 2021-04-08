@@ -7,61 +7,23 @@ class API
         response = RestClient.get(base_url)
         data = JSON.parse(response.body)
 
-        # url = "https://rickandmortyapi.com/api/character?page="
-        # response = RestClient.get(url)
-        # data = JSON.parse(response.body)
         total_pages = data["info"]["pages"]
         #total_pages = 34
         
-        # last_page_url = "#{url}#{total_pages}"
-
         page_number = 0
         until page_number == total_pages
             page_number += 1
             @@all_pages << "#{base_url}#{page_number}"
         end
     
-        # @@all_pages
-        individual_data = []
-        # characters = nil
+        all_data = []
 
         @@all_pages.each do |url|
             individual_response = RestClient.get(url)
-            # binding.pry
-            individual_data << JSON.parse(individual_response)["results"]
-            # binding.pry
-            # individual_data["results"]
+            all_data << JSON.parse(individual_response)["results"]
         end
 
-        characters = individual_data
-        binding.pry
-        # individual_data
-        #I DON'T UNDERSTAND WHY THIS IS RETURNING THE LAST PAGE ONLY
-
-        # url.each do |x|
-        #     x += 1
-        #     pages = "#{url}#{x}"
-        #     responses = RestClient.get(depagination)
-        #     datas = JSON.parse(responses.body)    
-        # end
-        # url
-        # binding.pry
-
-        # # until base_url == last_page
-        #     count = 1
-        #     while count < total_pages
-        #         depagination = "#{base_url}#{count}"
-        #         responses = RestClient.get(depagination)
-        #         datas = JSON.parse(responses.body)    
-        #         binding.pry
-
-        #     end
-        # end
-        # total_pages.times do |page_number|
-        #     page_number += 1
-        #     depagination = "#{url}#{page_number}"
-        #     responses = RestClient.get(depagination)
-        #     datas = JSON.parse(responses.body)
+        characters = all_data_data
     end
 end
 
