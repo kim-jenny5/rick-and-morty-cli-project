@@ -28,7 +28,6 @@ class API
         #may not be needed in API class
         characters.each do |character|
             Character.new(character["name"], character["species"], character["type"], character["location"]["name"], character["episode"])
-            binding.pry
         end
     end
 end

@@ -4,7 +4,7 @@ class Character
     @@all = []
 
     #will comment this out later
-    def initialize(name, species, type, location, episode)
+    def initialize(name:, species:, type:, location:, episode:)
         @name = name
         @species = species
         @type = type
