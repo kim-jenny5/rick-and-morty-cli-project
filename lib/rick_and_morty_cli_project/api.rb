@@ -5,10 +5,10 @@ class API
     def self.extracting_data
         base_url = "https://rickandmortyapi.com/api/character?page="
         response = RestClient.get(base_url)
-        data = JSON.parse(response.body)
+        data = JSON.parse(response)
 
         total_pages = data["info"]["pages"]
-        #total_pages = 34
+        #total_pages = 34 (as of April 2021)
         
         page_number = 0
         until page_number == total_pages
@@ -25,7 +25,6 @@ class API
 
         characters = all_data.flatten
 
-        #may not be needed in API class
         characters.each do |character|
             Character.new(character["name"], character["species"], character["type"], character["location"]["name"], character["episode"])
         end
