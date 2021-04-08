@@ -19,8 +19,8 @@ class API
         all_data = []
 
         @@all_pages.each do |url|
-            individual_response = RestClient.get(url)
-            all_data << JSON.parse(individual_response)["results"]
+            individual_page = RestClient.get(url)
+            all_data << JSON.parse(individual_page)["results"]
         end
 
         characters = all_data.flatten

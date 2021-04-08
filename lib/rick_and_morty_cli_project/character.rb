@@ -3,7 +3,7 @@ class Character
 
     @@all = []
 
-    #will comment this out later
+    #I want to metaprogram this later and refactor
     def initialize(name:, species:, type:, location:, episode:)
         @name = name
         @species = species
@@ -13,6 +13,14 @@ class Character
         save
     end
 
+    # Metaprogramming not working for some reason
+    # def initialize(attributes)
+    #   attributes.each do |key, value|
+    #       self.send(("#{key}="), value)
+    #   end
+    #   save
+    # end
+
     def save
         @@all << self
     end
@@ -21,17 +29,10 @@ class Character
       @@all
     end
 
-    #should be done this way, will uncomment out later
-    # def initialize(attributes)
-    #     attributes.each do |key, value|
-    #         self.send(("#{key}="), value)
-    #     end
-    # end
-
     # if @type == ""
     # end
     # later use REJECT for ommitting this attributes for certain characters
 
     # characters.select {|character| character["name"].include?("Morty")}
-    # This gets all Morty characters
+    # This gets all "Morty" characters
 end
