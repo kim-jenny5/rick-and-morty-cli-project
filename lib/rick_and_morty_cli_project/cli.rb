@@ -11,6 +11,8 @@ class CLI
         puts "YOU".colorize(:green)
         gets.strip
     end
+
+    @@name = user_input
     
     def starts
         puts "#{@@rick}"
@@ -20,8 +22,8 @@ class CLI
         puts "Let's get schwifty and tell us your name dawg!"
         puts
 
-        name = user_input
-        greets(name)
+        # name = user_input
+        greets(@@name)
     end
 
     def greets(name)
@@ -119,6 +121,29 @@ class CLI
                 # end
             end
             puts
+
+            puts "Would you like to know more about a character from this list?"
+            sleep(1)
+            puts
+            puts "#{@@morty}"
+            puts "Yo #{@@name}! Enter 'y' for yes or 'n' for no."
+            yn_input = user_input
+
+            if yn_input == "y" || yn_input == "yes"
+                puts "Enter the number next to the character you want to see information on!"
+            elsif yn_input == "n" || yn_input == "no"
+                puts "#{@@morty}"
+                puts "Hey #{@@name}! I'll take you back to the menu. Come on!"
+                sleep(2)
+                puts
+                menu
+            else
+                puts "#{@@morty}"
+                puts "Sorry man. That's not an option. Choose something else maybe? 🤷🏻‍♂️"
+                
+            end
+            # end
+
         elsif char.count > 1
             versions = []
 
