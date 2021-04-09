@@ -70,6 +70,7 @@ class CLI
             leaves
         else
             invalid_answer
+            first_time_menu
         end
     end
 
@@ -89,6 +90,7 @@ class CLI
             leaves
         else
             invalid_answer
+            menu
         end
     end
 
@@ -192,6 +194,7 @@ class CLI
         puts
         puts "To see a different character, enter a number from the same list above."
         puts "Otherwise, you can press 'm' to return back to the menu!"
+        options_after_list
         # input = user_input
         # puts
         # # CODE STOPS WORKING HERE
@@ -232,7 +235,7 @@ class CLI
             menu 
         end
         list_directions
-        options_after_list
+        # options_after_list
     end
 
     def morty_menu_prelude
