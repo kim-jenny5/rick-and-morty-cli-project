@@ -40,21 +40,43 @@ class CLI
         puts "Whenever you're ready, tell us the number you want to see from the menu below!"
         sleep(2.5)
 
-        menu
+        first_time_menu
     end
 
-    def menu
+    def base_menu
         puts
         puts "1. Let's stalk some characters! 😈"
         puts "2. Let's have some fun! 🤪"
         puts "3. Do you wanna develop an app??? 👩🏻‍💻"
         puts "4. Nah, I want to leave. I don't even like Rick and Morty."
-        puts 
+    end
 
+    def first_time_menu
+        base_menu
+        puts
         selection = user_input
 
         if selection.include?("1")
             character_info_prelude
+        elsif selection.include?("2")
+            fun
+        elsif selection.include?("3")
+            app
+        elsif selection.include?("4")
+            sleep(1)
+            leaves
+        else
+            invalid_answer
+        end
+    end
+
+    def menu
+        base_menu
+        puts
+        selection = user_input
+
+        if selection.include?("1")
+            character_info
         elsif selection.include?("2")
             fun
         elsif selection.include?("3")
@@ -83,12 +105,12 @@ class CLI
         puts "#{@@rick}"
         puts "And awayyyyyyy we goooooo!"
         sleep(1.5)
-        puts
 
         character_info
     end
 
     def character_info
+        puts
         puts "Which character do you wanna know more about?"
         puts "Enter a specific name or 'list' for 5 random characters."
         puts
@@ -174,12 +196,14 @@ class CLI
         puts
         yn_input = user_input
 
+        # INCOMPLETE
         if yn_input == "y" || yn_input == "yes"
             puts
             puts "Enter the number next to the character you want to see information on!"
             puts
             list_char_num = user_input
             puts
+            # need to connect to API here
         elsif yn_input == "n" || yn_input == "no"
             puts
             puts "#{@@morty}"
