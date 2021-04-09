@@ -74,7 +74,7 @@ class CLI
         sleep(1.5)
         puts
         puts "#{@@morty}"
-        puts "#{@@rick_name}!".bold
+        puts "#{@@rick_name}!".upcase.bold
         
         sleep(1)
         puts
@@ -128,12 +128,29 @@ class CLI
 
             versions.each {|x| puts x}
         elsif char.count == 1
-            inside_char = char[0]
-            puts "Name: #{inside_char.name}"
-            puts "Species: #{inside_char.species}"
-            puts "Type: #{inside_char.type}"
-            puts "Episode Count: #{inside_char.episode.count}"
+            @inside_char = char[0]
+            binding.pry
+            if @inside_char.type == ""
+                no_type
+                puts "Episode Count: #{@inside_char.episode.count}"
+                puts
+            else
+                no_type
+                puts "Type: #{@inside_char.type}"
+                puts "Episode Count: #{@inside_char.episode.count}"
+                puts
+            end
+            # puts "Name: #{inside_char.name}"
+            # puts "Species: #{inside_char.species}"
+            # puts "Type: #{inside_char.type}"
+            # puts "Episode Count: #{inside_char.episode.count}"
+            # puts
         end
+    end
+
+    def no_type
+        puts "Name: #{@inside_char.name}"
+        puts "Species: #{@inside_char.species}"
     end
 
     def fun
