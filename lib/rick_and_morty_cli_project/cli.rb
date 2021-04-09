@@ -6,6 +6,8 @@ class CLI
     @@morty_name = "Morty"
     @@morty = "#{@@morty_name}".upcase.bold.colorize(:green)
 
+    @@random_arr = []
+
     def user_input
         sleep(0.5)
         puts "YOU".colorize(:green)
@@ -76,7 +78,7 @@ class CLI
         selection = user_input
 
         if selection.include?("1")
-            character_info
+            character_info_directions
         elsif selection.include?("2")
             fun
         elsif selection.include?("3")
@@ -106,15 +108,18 @@ class CLI
         puts "And awayyyyyyy we goooooo!"
         sleep(1.5)
 
+        character_info_directions
+    end
+
+    def character_info_directions
+        puts
+        puts "Which character do you wanna know more about?"
+        puts "Enter a specific name or 'list' for 5 random characters."
         character_info
     end
 
     def character_info
         puts
-        puts "Which character do you wanna know more about?"
-        puts "Enter a specific name or 'list' for 5 random characters."
-        puts
-
         input = user_input
         puts
 
@@ -122,13 +127,36 @@ class CLI
 
         if input == "list"
             puts "Characters:".underline
-            
-            random_arr = []
-
-            5.times {random_arr << rand(Character.all.length)}
-            random_arr.map.with_index(1) do |object_num, index|
-                attributes = Character.all[object_num]
-                puts "#{index}. #{attributes.name}"
+        
+            if @@random_arr.size == 0
+                5.times {@@random_arr << rand(Character.all.length)}
+                output_list
+                # @@random_arr.each.with_index(1) do |object_num, index|
+                #     character = Character.all[object_num]
+                #     puts "#{index}. #{character.name}"
+                # end
+                # sleep(1.5)
+                # puts
+                # puts "To know more about a character from this list, enter the number next to their name!"
+                # puts "Otherwise, press anything to be taken back to the menu."
+                # options_after_list
+            else
+                output_list
+                # @@random_arr.each.with_index(1) do |object_num, index|
+                #     character = Character.all[object_num]
+                #     puts "#{index}. #{character.name}"
+                # end
+                # sleep(1.5)
+                # puts
+                # puts "To know more about a character from this list, enter the number next to their name!"
+                # puts "Otherwise, press anything to be taken back to the menu."
+                # options_after_list
+            end
+            # @@random_arr << 5.times {rand(Character.all.length)}
+            # 5.times {@@random_arr << rand(Character.all.length)}
+            # @@random_arr.each.with_index(1) do |object_num, index|
+            #     character = Character.all[object_num]
+            #     puts "#{index}. #{character.name}"
                 # puts "Species: #{attributes.species}"
                 # puts "Type: #{attributes.type}"
                 # puts "Current location: #{attributes.location}"
@@ -141,9 +169,12 @@ class CLI
                 #     puts "Current location: #{attributes.location}"
                 #     puts "Episode count: #{atttributes.episode.count}"
                 # end
-            end
-            puts
-            options_after_list
+            # end
+            # puts
+            # puts "If you'd like to know more about a character from this list, enter the number next to their name!"
+            # puts "Otherwise, press anything to be taken back to the menu."
+            # sleep(1.5)
+            # puts
         elsif char.count > 1
             versions = []
 
@@ -157,11 +188,11 @@ class CLI
             @inside_char = char[0]
             if @inside_char.type == ""
                 no_type
-                puts "Episode Count: #{@inside_char.episode.count}"
+                puts "Episode count: #{@inside_char.episode.count}"
             else
                 no_type
                 puts "Type: #{@inside_char.type}"
-                puts "Episode Count: #{@inside_char.episode.count}"
+                puts "Episode count: #{@inside_char.episode.count}"
             end
             # puts "Name: #{inside_char.name}"
             # puts "Species: #{inside_char.species}"
@@ -182,39 +213,118 @@ class CLI
                 sleep(1)
                 leaves
             end
-        end
-    end
-
-    def options_after_list
-        puts "Would you like to know more about a character from this list?"
-        puts "Enter yes or no."
-        sleep(1.5)
-        input_after_options
-    end
-    
-    def input_after_options
-        puts
-        yn_input = user_input
-
-        # INCOMPLETE
-        if yn_input == "y" || yn_input == "yes"
-            puts
-            puts "Enter the number next to the character you want to see information on!"
-            puts
-            list_char_num = user_input
-            puts
-            # need to connect to API here
-        elsif yn_input == "n" || yn_input == "no"
-            puts
-            puts "#{@@morty}"
-            puts "I'll take you back to the menu. Come on!"
-            sleep(1.5)
-            menu
         else
             invalid_answer
-            input_after_options
+            character_info
         end
     end
+
+    def output_list
+        @@random_arr.each.with_index(1) do |object_num, index|
+            character = Character.all[object_num]
+            puts "#{index}. #{character.name}"
+        end
+        sleep(1.5)
+        puts
+        puts "To know more about a character from this list, enter the number next to their name!"
+        puts "Otherwise, press anything to be taken back to the menu."
+        options_after_list
+    end
+
+    # 1:23 pm FIXXXXX
+    def options_after_list
+        # puts "If you'd like to know more about a character from this list, enter the number next to their name!"
+        # puts "Otherwise, press anything to be taken back to the menu."
+        # sleep(1.5)
+        # input = user_input
+
+        # # if input == 
+
+        # puts "Would you like to know more about a character from this list?"
+        # puts "Enter yes. Otherwise you'll be taken back to the menu."
+        # sleep(1.5)
+        # input_after_options
+
+
+        # NEW EDIT
+        sleep(2)
+        puts
+        char_list_input = user_input.to_i
+        puts
+
+        char_index = @@random_arr[char_list_input-1]
+
+        if @@random_arr.include?(char_index)
+            character = Character.all[char_index]
+            puts "Name: #{character.name}"
+            puts "Species: #{character.species}"
+            if character.type == ""
+                puts "Current location: #{character.location}"
+                puts "Episode count: #{character.episode.count}"
+            else
+                puts "Type: #{character.type}"
+                puts "Current location: #{character.location}"
+                puts "Episode count: #{character.episode.count}"
+            end
+            sleep(2)
+            puts
+            puts "To see a different character, enter a number from the same list above."
+            puts "Otherwise, you can press anything to return back to the menu!"
+            if char_list_input == (1..5)
+                # (1..5).include?(char_list_input)
+                options_after_list
+            elsif char_list_input != (1..5)
+                puts
+                puts "#{@@morty}"
+                puts "I'll take you back to the menu. Come on!"
+                sleep(1.5)
+                menu
+            end
+            # else
+            # end
+            # Character.all[char_index].each do |attribute|
+            #     puts "Name: #{attribute.name}"
+            #     puts "Species: #{attribute.species}"
+            #     if attribute.type == ""
+            #         puts "Current location: #{attribute.location}"
+            #     else
+            #         puts "Type: #{attribute.type}"
+            #     end
+            #     # puts "Type: #{attribute.type}"
+                # puts "Current location: #{attribute.location}"
+        # else
+        #     puts
+        #     puts "#{@@morty}"
+        #     puts "I'll take you back to the menu. Come on!"
+        #     sleep(1.5)
+        #     menu
+        end
+    end
+    
+    # UNNECESSARY
+    # def input_after_options
+    #     puts
+    #     yn_input = user_input
+
+    #     # INCOMPLETE
+    #     if yn_input == "y" || yn_input == "yes"
+    #         puts
+    #         puts "Enter the number next to the character you want to see information on!"
+    #         puts
+    #         list_char_num = user_input
+    #         puts
+    #         # need to connect to API here
+    #     elsif yn_input == "n" || yn_input == "no"
+    #         puts
+    #         puts "#{@@morty}"
+    #         puts "I'll take you back to the menu. Come on!"
+    #         sleep(1.5)
+    #         menu
+    #     else
+    #         invalid_answer
+    #         input_after_options
+    #     end
+    # end
 
     def no_type
         puts "Name: #{@inside_char.name}"
