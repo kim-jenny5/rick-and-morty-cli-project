@@ -21,7 +21,7 @@ class CLI
         puts
 
         name = user_input
-        greets(@@name)
+        greets(name)
     end
 
     def greets(name)
@@ -130,31 +130,38 @@ class CLI
             versions.each {|x| puts x}
         elsif char.count == 1
             @inside_char = char[0]
-            binding.pry
             if @inside_char.type == ""
                 no_type
                 puts "Episode Count: #{@inside_char.episode.count}"
-                puts
             else
                 no_type
                 puts "Type: #{@inside_char.type}"
                 puts "Episode Count: #{@inside_char.episode.count}"
-                puts
             end
             # puts "Name: #{inside_char.name}"
             # puts "Species: #{inside_char.species}"
             # puts "Type: #{inside_char.type}"
             # puts "Episode Count: #{inside_char.episode.count}"
             # puts
+            puts
+            puts "#{@@morty}"
+            puts "Do you wanna see the menu again?"
+            puts
+            puts "Enter 'yes' for menu or 'no' to leave."
+            puts
+            yn_input = user_input
+            if yn_input == "y" || yn_input == "yes"
+                menu
+            else
+                leaves
+            end
         end
     end
 
     def options_after_list
         puts "Would you like to know more about a character from this list?"
-        sleep(1)
-        puts
-        puts "#{@@morty}"
-        puts "Yo! Enter 'y' for yes or 'n' for no."
+        puts "Enter yes or no."
+        sleep(1.5)
         input_after_options
     end
     
@@ -172,13 +179,12 @@ class CLI
             puts
             puts "#{@@morty}"
             puts "I'll take you back to the menu. Come on!"
-            sleep(2)
-            puts
+            sleep(1.5)
             menu
         else
             puts
             puts "#{@@morty}"
-            puts "Sorry man. That's not an option. Choose 'y' or 'n' maybe? 🤷🏻‍♂️"
+            puts "Sorry man. That's not an option. Choose yes or no? 🤷🏻‍♂️"
             input_after_options
         end
     end
