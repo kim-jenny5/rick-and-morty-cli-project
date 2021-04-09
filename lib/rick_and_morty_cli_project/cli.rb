@@ -31,12 +31,12 @@ class CLI
         puts "#{(name.upcase).italic}!!! So what do you wanna do today? Huh? Whadya wanna do??"
         sleep(1)
         puts "Don't be like Morty and choose decisively!"
-        sleep(3)
+        sleep(2.5)
         
         puts
         puts "#{@@morty}"
         puts "Aw jeez Rick... Sorry about him man."
-        sleep(2.5)
+        sleep(2)
         puts "Whenever you're ready, tell us the number you want to see from the menu below!"
         sleep(2.5)
 
@@ -122,11 +122,11 @@ class CLI
         elsif char.count > 1
             versions = []
 
-            versions << char.map.with_index(1) do |char_obj, index|
-                puts "Version ##{index}: #{char_obj.name}"
-                puts "#{char_obj.location}"
-                binding.pry
+            char.map.with_index(1) do |char_obj, index|
+                versions << "Version ##{index}: #{char_obj.name} - #{char_obj.location}"
             end
+
+            versions.each {|x| puts x}
         elsif char.count == 1
             inside_char = char[0]
             puts "Name: #{inside_char.name}"
