@@ -94,7 +94,7 @@ class CLI
         input = user_input
         puts
 
-        specific_name = Character.all.select {|char| char.name.include?(input)}
+        char = Character.all.select {|char| char.name.include?(input)}
 
         if input == "list"
             puts "Characters:".underline
@@ -119,10 +119,20 @@ class CLI
                 # end
             end
             puts
-        elsif specific_name
-            specific_name.each do |char_obj|
+        elsif char.count > 1
+            versions = []
+
+            versions << char.map.with_index(1) do |char_obj, index|
+                puts "Version ##{index}: #{char_obj.name}"
+                puts "#{char_obj.location}"
                 binding.pry
             end
+        elsif char.count == 1
+            inside_char = char[0]
+            puts "Name: #{inside_char.name}"
+            puts "Species: #{inside_char.species}"
+            puts "Type: #{inside_char.type}"
+            puts "Episode Count: #{inside_char.episode.count}"
         end
     end
 
