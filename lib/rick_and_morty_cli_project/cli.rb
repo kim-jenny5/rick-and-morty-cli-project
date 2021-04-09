@@ -62,6 +62,8 @@ class CLI
         elsif selection.include?("4")
             sleep(1)
             leaves
+        else
+            invalid_answer
         end
     end
 
@@ -69,7 +71,7 @@ class CLI
         sleep(1)
         puts
         puts "#{@@rick}"
-        puts "Bet Morty stalks Jessica on da socials 👀"
+        puts "Bet Morty stalks Jessica on da socials. 👀"
         
         sleep(1.5)
         puts
@@ -128,6 +130,7 @@ class CLI
             end
 
             versions.each {|x| puts x}
+            # Need to put in an option to know more about the characters or go to the menu. 
         elsif char.count == 1
             @inside_char = char[0]
             if @inside_char.type == ""
@@ -143,16 +146,18 @@ class CLI
             # puts "Type: #{inside_char.type}"
             # puts "Episode Count: #{inside_char.episode.count}"
             # puts
+            sleep(1.5)
             puts
             puts "#{@@morty}"
             puts "Do you wanna see the menu again?"
             puts
-            puts "Enter 'yes' for menu or 'no' to leave."
+            puts "Enter 'yes' for menu. Otherwise, you'll be exited out of the app. 😢"
             puts
             yn_input = user_input
             if yn_input == "y" || yn_input == "yes"
                 menu
             else
+                sleep(1)
                 leaves
             end
         end
@@ -182,9 +187,7 @@ class CLI
             sleep(1.5)
             menu
         else
-            puts
-            puts "#{@@morty}"
-            puts "Sorry man. That's not an option. Choose yes or no? 🤷🏻‍♂️"
+            invalid_answer
             input_after_options
         end
     end
@@ -192,6 +195,12 @@ class CLI
     def no_type
         puts "Name: #{@inside_char.name}"
         puts "Species: #{@inside_char.species}"
+    end
+
+    def invalid_answer
+        puts
+        puts "#{@@morty}"
+        puts "Sorry man. That's not an option. Choose something else? 🤷🏻‍♂️"
     end
 
     def fun
