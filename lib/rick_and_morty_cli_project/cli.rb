@@ -11,8 +11,6 @@ class CLI
         puts "YOU".colorize(:green)
         gets.strip
     end
-
-    @@name = user_input
     
     def starts
         puts "#{@@rick}"
@@ -22,7 +20,7 @@ class CLI
         puts "Let's get schwifty and tell us your name dawg!"
         puts
 
-        # name = user_input
+        name = user_input
         greets(@@name)
     end
 
@@ -121,7 +119,6 @@ class CLI
                 # end
             end
             puts
-
             options_after_list
         elsif char.count > 1
             versions = []
@@ -157,7 +154,8 @@ class CLI
         sleep(1)
         puts
         puts "#{@@morty}"
-        puts "Yo #{@@name}! Enter 'y' for yes or 'n' for no."
+        puts "Yo! Enter 'y' for yes or 'n' for no."
+        input_after_options
     end
     
     def input_after_options
@@ -167,10 +165,13 @@ class CLI
         if yn_input == "y" || yn_input == "yes"
             puts
             puts "Enter the number next to the character you want to see information on!"
+            puts
+            list_char_num = user_input
+            puts
         elsif yn_input == "n" || yn_input == "no"
             puts
             puts "#{@@morty}"
-            puts "Hey #{@@name}! I'll take you back to the menu. Come on!"
+            puts "I'll take you back to the menu. Come on!"
             sleep(2)
             puts
             menu
