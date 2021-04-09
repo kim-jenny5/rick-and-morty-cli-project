@@ -158,21 +158,27 @@ class CLI
         puts
         puts "#{@@morty}"
         puts "Yo #{@@name}! Enter 'y' for yes or 'n' for no."
+    end
+    
+    def input_after_options
+        puts
         yn_input = user_input
 
         if yn_input == "y" || yn_input == "yes"
+            puts
             puts "Enter the number next to the character you want to see information on!"
         elsif yn_input == "n" || yn_input == "no"
+            puts
             puts "#{@@morty}"
             puts "Hey #{@@name}! I'll take you back to the menu. Come on!"
             sleep(2)
             puts
             menu
         else
-            puts "#{@@morty}"
-            puts "Sorry man. That's not an option. Choose something else maybe? 🤷🏻‍♂️"
             puts
-            yn_input
+            puts "#{@@morty}"
+            puts "Sorry man. That's not an option. Choose 'y' or 'n' maybe? 🤷🏻‍♂️"
+            input_after_options
         end
     end
 
