@@ -7,6 +7,7 @@ class CLI
     @@morty = "#{@@morty_name}".upcase.bold.colorize(:green)
 
     @@random_arr = []
+    @@char_list_input = nil
 
     def user_input
         sleep(0.5)
@@ -181,26 +182,26 @@ class CLI
         sleep(1.5)
         puts
         puts "To know more about a character from this list, enter the number next to their name!"
-        puts "Otherwise, press anything to be taken back to the menu."
+        puts "Otherwise, press 'm' to be taken back to the menu."
         options_after_list
     end
+    # CODE UP TO HERE WORKS
     
     def list_directions
         sleep(2)
         puts
         puts "To see a different character, enter a number from the same list above."
-        puts "Otherwise, you can press anything to return back to the menu!"
-        puts
-        input = user_input
-        puts
-        if input == 1 || input == 2 || input == 3 || input == 4 || input == 5
-            @@char_list_input = input
-            options_after_list
+        puts "Otherwise, you can press 'm' to return back to the menu!"
+        # input = user_input
+        # puts
+        # # CODE STOPS WORKING HERE
+        # if input == 1 || input == 2 || input == 3 || input == 4 || input == 5
+        #     @@char_list_input = input
+        #     options_after_list
         # else
         #     morty_menu_prelude
         #     sleep(1.5)
         #     menu 
-        end
     end
 
     def options_after_list
@@ -225,51 +226,17 @@ class CLI
                     puts "Episode count: #{character.episode.count}"
                 end
             end
-            list_directions
-        else
+        elsif @@char_list_input == "m" || @@char_list_input == "menu"
             morty_menu_prelude
             sleep(1.5)
             menu 
         end
-        # sleep(2)
-        # puts
-        # puts "To see a different character, enter a number from the same list above."
-        # puts "Otherwise, you can press anything to return back to the menu!"
-        # puts
-        # char_list_input_2 = user_input.to_i
-        # puts
-        # if char_list_input_2 == 1 || char_list_input_2 == 2 || char_list_input_2 == 3 || char_list_input_2 == 4 || char_list_input_2 == 5
-        #     # (1..5).include?(char_list_input)
-        #     options_after_list
-        # else
-        #     puts
-        #     puts "#{@@morty}"
-        #     puts "I'll take you back to the menu. Come on!"
-        #     sleep(1.5)
-        #     menu
-        # end
-            # else
-            # end
-            # Character.all[char_index].each do |attribute|
-            #     puts "Name: #{attribute.name}"
-            #     puts "Species: #{attribute.species}"
-            #     if attribute.type == ""
-            #         puts "Current location: #{attribute.location}"
-            #     else
-            #         puts "Type: #{attribute.type}"
-            #     end
-            #     # puts "Type: #{attribute.type}"
-                # puts "Current location: #{attribute.location}"
-        # else
-        #     puts
-        #     puts "#{@@morty}"
-        #     puts "I'll take you back to the menu. Come on!"
-        #     sleep(1.5)
-        #     menu
+        list_directions
+        options_after_list
     end
 
     def morty_menu_prelude
-        puts
+        # puts
         puts "#{@@morty}"
         puts "I'll take you back to the menu. Come on!"
     end
