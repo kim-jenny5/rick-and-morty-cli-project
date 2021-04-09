@@ -80,6 +80,7 @@ class CLI
         puts
         puts "#{@@rick}"
         puts "And awayyyyyyy we goooooo!"
+        sleep(1.5)
         puts
 
         character_info
@@ -87,18 +88,23 @@ class CLI
 
     def character_info
         puts "Which character do you wanna know more about?"
-        puts "Enter a specific name or 'list characters' for a list of some random characters."
+        puts "Enter a specific name or 'list' for 5 random characters."
         puts
 
         input = user_input
+        puts
 
-        if input == "list characters"
-            random_list = []
+        specific_name = Character.all.select {|char| char.name.include?(input)}
 
-            5.times {random_list << rand(Character.all.length)}
-            random_list.map do |index|
-                attributes = Character.all[index]
-                puts "Name: #{attributes.name}"
+        if input == "list"
+            puts "Characters:".underline
+            
+            random_arr = []
+
+            5.times {random_arr << rand(Character.all.length)}
+            random_arr.map.with_index(1) do |object_num, index|
+                attributes = Character.all[object_num]
+                puts "#{index}. #{attributes.name}"
                 # puts "Species: #{attributes.species}"
                 # puts "Type: #{attributes.type}"
                 # puts "Current location: #{attributes.location}"
@@ -112,8 +118,11 @@ class CLI
                 #     puts "Episode count: #{atttributes.episode.count}"
                 # end
             end
-            random_list
-            binding.pry
+            puts
+        elsif specific_name
+            specific_name.each do |char_obj|
+                binding.pry
+            end
         end
     end
 
