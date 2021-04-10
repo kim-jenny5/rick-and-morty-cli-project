@@ -239,7 +239,6 @@ class CLI
     end
 
     def morty_menu_prelude
-        # puts
         puts "#{@@morty}"
         puts "I'll take you back to the menu #{@@name}. Come on!"
     end
@@ -450,6 +449,7 @@ class CLI
         input = user_input
         if input == "y" || input == "yes"
             sleep(3)
+            puts
             puts "You've developed 'Lovefinderzz' and have now wreaked havoc in your world."
             sleep(2.5)
             puts "Earth's water supply has been stolen by the Monogatrons."
@@ -460,9 +460,17 @@ class CLI
             puts "Since you've developed a deadly app, you'll now be exited out."
             sleep(3)
         elsif input == "n" || input == "no"
+            sleep(2)
+            puts
             puts "GLOOTIE".bold.colorize(:green)
             puts "Cool. Well, if anyone wants to develop an app with me, I'm down."
+            sleep(2)
+            puts
+            puts "#{@@rick}"
+            puts "Smart for not developing that app, #{@@name}."
             sleep(1.5)
+            puts
+            morty_menu_prelude
             menu
         else
             invalid_answer
