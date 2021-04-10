@@ -267,10 +267,10 @@ class CLI
         sleep(1)
         puts "Okay man. You can choose either of the options below--just enter the number!"
         sleep(4)
-        fun_options
+        fun_options_menu
     end
 
-    def fun_options
+    def fun_options_menu
         puts
         puts "(1)  ".bold + "Rick created a device that brings one Rick & Morty character to life."
         puts "     Choose this option to see who you'd generate."
@@ -279,12 +279,19 @@ class CLI
         puts "     I'm Mr. Meeseeks! Look at me!"
         puts
         puts "     Choose this option to interact with Mr. Meeseeks."
+        fun_options
+    end
+
+    def fun_options
         puts
         input = user_input
         if input.include?("1")
             fun_opt_1
         elsif input.include?("2")
             fun_opt_2
+        else
+            invalid_answer
+            fun_options
         end
     end
 
@@ -293,36 +300,6 @@ class CLI
         # jerry = Character.all.select {|char| char.name.include?("Jerry")}
         # rand_num = rand(jerry.size)
         # char_generated = jerry[rand_num]
-
-        # puts
-        # puts "#{char_generated.name}".bold
-        # puts
-        # puts "Details:".underline
-        # puts "Species: #{char_generated.species}"
-        # if char_generated.type == ""
-        #     puts "Current location: #{char_generated.location}"
-        # else
-        #     puts "Type: #{char_generated.type}"
-        #     puts "Current location: #{char_generated.location}"
-        # end
-        # if char_generated.name.include?("Jerry")
-        #     sleep(3)
-        #     puts
-        #     puts "#{@@rick}"
-        #     puts "HAHAHA! In fact, you can take all the infinite Jerry's!!! He's useless in every dimension. 🤨"
-        #     sleep(2.5)
-        #     puts
-        #     puts "#{@@morty}"
-        #     puts "Rick! A-a-at least leave one version of my dad for me, aw jeez."
-        # end
-        # sleep(2)
-        # puts
-        # puts "#{@@rick}"
-        # puts "While I get my machine working, you should choose another option dawg."
-        # sleep(2)
-        # puts
-        # puts "Enter 'b' to go back to see another fun option or 'm' to return to the menu."
-        # input_for_oaf
 
         rand_num = rand(Character.all.size)
         char_generated = Character.all[rand_num]
@@ -418,6 +395,10 @@ class CLI
             puts
             input_two = user_input
             if input_two == "m"
+                sleep(1)
+                puts
+                morty_menu_prelude
+                sleep(1.5)
                 menu
             else
                 leaves
@@ -435,6 +416,7 @@ class CLI
             sleep(1)
             puts
             morty_menu_prelude
+            sleep(1.5)
             menu
         else
             invalid_answer
