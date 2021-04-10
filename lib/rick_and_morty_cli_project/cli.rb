@@ -218,15 +218,15 @@ class CLI
 
             if @@random_arr.include?(char_index)
                 character = Character.all[char_index]
-                puts "Name: #{character.name}"
-                puts "Species: #{character.species}"
+                puts "Name: ".colorize(:cyan) + "#{character.name}"
+                puts "Species: ".colorize(:cyan) + "#{character.species}"
                 if character.type == ""
-                    puts "Current location: #{character.location}"
-                    puts "Episode count: #{character.episode.count}"
+                    puts "Current location: ".colorize(:cyan) + "#{character.location}"
+                    puts "Episode count: ".colorize(:cyan) + "#{character.episode.count}"
                 else
-                    puts "Type: #{character.type}"
-                    puts "Current location: #{character.location}"
-                    puts "Episode count: #{character.episode.count}"
+                    puts "Type: ".colorize(:cyan) + "#{character.type}"
+                    puts "Current location: ".colorize(:cyan) + "#{character.location}"
+                    puts "Episode count: ".colorize(:cyan) + "#{character.episode.count}"
                 end
             end
         elsif @@char_list_input == "m" || @@char_list_input == "menu"
