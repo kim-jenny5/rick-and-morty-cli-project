@@ -7,7 +7,7 @@ class CLI
     @@morty = "MORTY".bold.colorize(:green)
 
     @@random_arr = []
-    @@char_list_input = nil
+    @@name = nil
 
     def user_input
         sleep(0.5)
@@ -23,8 +23,8 @@ class CLI
         puts "Let's get schwifty and tell us your name dawg!"
         puts
 
-        name = user_input
-        greets(name)
+        @@name = user_input
+        greets(@@name)
     end
 
     def greets(name)
@@ -210,11 +210,11 @@ class CLI
     def options_after_list
         sleep(2)
         puts
-        @@char_list_input = user_input.to_i
+        char_list_input = user_input.to_i
         puts
 
-        if @@char_list_input == 1 || @@char_list_input == 2 || @@char_list_input == 3 || @@char_list_input == 4 || @@char_list_input == 5
-            char_index = @@random_arr[@@char_list_input-1]
+        if char_list_input == 1 || char_list_input == 2 || char_list_input == 3 || char_list_input == 4 || char_list_input == 5
+            char_index = @@random_arr[char_list_input-1]
 
             if @@random_arr.include?(char_index)
                 character = Character.all[char_index]
@@ -229,7 +229,7 @@ class CLI
                     puts "Episode count: ".colorize(:cyan) + "#{character.episode.count}"
                 end
             end
-        elsif @@char_list_input == "m" || @@char_list_input == "menu"
+        elsif char_list_input == "m" || char_list_input == "menu"
             morty_menu_prelude
             sleep(1.5)
             menu 
@@ -241,7 +241,7 @@ class CLI
     def morty_menu_prelude
         # puts
         puts "#{@@morty}"
-        puts "I'll take you back to the menu. Come on!"
+        puts "I'll take you back to the menu #{@@name}. Come on!"
     end
 
     def no_type
@@ -265,7 +265,7 @@ class CLI
         puts "#{@@morty}"
         puts "Aw jeez Rick. Why do I gotta?"
         sleep(1)
-        puts "Okay man. You can choose either of the options below--just enter the number!"
+        puts "Okay #{@@name}. You can choose either of the options below--just enter the number!"
         sleep(4)
         fun_options_menu
     end
@@ -348,7 +348,7 @@ class CLI
         if input.length > 15
             sleep(3)
             puts
-            puts "Your request was too difficult for your Meeseeks."
+            puts "Your request to #{input} was too difficult for your Meeseeks."
             sleep(2)
             puts
             puts "MR. MEESEEKS".bold.colorize(:green)
@@ -411,7 +411,7 @@ class CLI
         input = user_input
         if input == "b"
             sleep(1)
-            fun_options
+            fun_options_menu
         elsif input == "m"
             sleep(1)
             puts
@@ -425,6 +425,49 @@ class CLI
     end
 
     def app
+        puts
+        puts "GLOOTIE".bold.colorize(:green)
+        puts "Do you wanna develop an app?"
+        sleep(1.5)
+        puts
+        puts "#{@@rick}"
+        puts "No thanks, Glootie. They don't want to develop an app."
+        sleep(2)
+        puts
+        puts "Glootie whispers in your ear."
+        sleep(1.5)
+        puts
+        puts "GLOOTIE".bold.colorize(:green)
+        puts "Are you sure?? Let's develop an app together!"
+        sleep(1.5)
+        puts
+        puts "If you still want to develop an app, enter 'y' for yes or 'n' for no."
+        puts
+        app_input
+    end
+
+    def app_input
+        input = user_input
+        if input == "y" || input == "yes"
+            sleep(3)
+            puts "You've developed 'Lovefinderzz' and have now wreaked havoc in your world."
+            sleep(2.5)
+            puts "Earth's water supply has been stolen by the Monogatrons."
+            sleep(2)
+            puts "Shouldn't have developed an app..."
+            sleep(2.5)
+            puts
+            puts "Since you've developed a deadly app, you'll now be exited out."
+            sleep(3)
+        elsif input == "n" || input == "no"
+            puts "GLOOTIE".bold.colorize(:green)
+            puts "Cool. Well, if anyone wants to develop an app with me, I'm down."
+            sleep(1.5)
+            menu
+        else
+            invalid_answer
+            app_input
+        end
     end
 
     def leaves
