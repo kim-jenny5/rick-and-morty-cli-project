@@ -321,7 +321,7 @@ class CLI
         # puts "While I get my machine working, you should choose another option dawg."
         # sleep(2)
         # puts
-        # puts "Enter 'b' to go back to see another fun option or 'm' to retun to the main menu."
+        # puts "Enter 'b' to go back to see another fun option or 'm' to return to the menu."
         # input_for_oaf
 
         rand_num = rand(Character.all.size)
@@ -355,52 +355,73 @@ class CLI
         puts "While I get my machine working, you should choose another option dawg."
         sleep(2)
         puts
-        puts "Enter 'b' to go back to see another fun option or 'm' to retun to the main menu."
+        puts "Enter 'b' to go back to see another fun option or 'm' to return to the menu."
         input_for_oaf
     end
 
     def fun_opt_2
+        puts
         puts "MR. MEESEEKS".bold.colorize(:green)
         puts "Hi! I'm Mr. Meeseeks! Look at me! How can I help youuu?"
+        sleep(1)
+        puts
+        puts "You can ask Mr. Meeseeks to do anything. Enter your request here!"
+        puts
         input = user_input
         if input.length > 15
-            sleep(2)
+            sleep(3)
+            puts
             puts "Your request was too difficult for your Meeseeks."
-            sleep(1)
+            sleep(2)
             puts
             puts "MR. MEESEEKS".bold.colorize(:green)
             puts "Existence is pain to a Meeseeks! I just wanna die!"
             sleep(2)
             puts
             puts "Your Meeseeks doesn't want to help you anymore."
-            sleep(1)
-            puts "He's angry at you for such a difficult request and is out to get yo now."
-            sleep(1)
+            sleep(1.5)
+            puts "He's angry at you for such a difficult request and is out to get you now."
+            sleep(1.5)
             puts "You run to Rick and Morty for help."
-            sleep(2)
+            sleep(2.5)
+            puts
             puts "🔫 🔫 🔫 pew pew *laser sounds*"
             sleep(3)
+            puts
             puts "#{@@rick}"
-            puts "Next time, how about you keep your request to a minimum, HMMMM?"
+            puts "Next time, how about you keep your request to a minimum, HMMMM? 🤨"
             sleep(1)
             puts "Let's take you back to somewhere safe."
-            sleep(1)
-            puts
-            puts "Enter 'b' to go back to see another fun option or 'm' to retun to the main menu."
-            input_for_oaf
-        else
-            puts "MR. MEESEEKS".bold.colorize(:green)
-            puts "Hi! I'm Mr. Meeseeks! Look at me!!"
             sleep(2)
             puts
+            puts "Enter 'b' to go back to see another fun option or 'm' to return to the menu."
+            input_for_oaf
+        else
+            puts
             puts "MR. MEESEEKS".bold.colorize(:green)
+            puts "Hi! I'm Mr. Meeseeks! Look at me!!"
+            sleep(2.5)
             puts "Allll done! I'm Mr. Meeseeks!"
-            sleep(1)
+            sleep(1.5)
             puts
             puts "POOF!"
             sleep(1)
             puts
-            puts "Your request to #{input} has now been completed."
+            puts "Your request to '#{input}' has now been completed."
+            sleep(2)
+            puts
+            puts "#{@@rick}"
+            puts "Well, that was fun. 😐 You wanna go back to the menu?"
+            sleep(1.5)
+            puts
+            puts "Enter 'm' for menu. Otherwise, you'll be exited out of the app. 😢"
+            puts
+            input_two = user_input
+            if input_two == "m"
+                menu
+            else
+                leaves
+            end
         end
     end
 
