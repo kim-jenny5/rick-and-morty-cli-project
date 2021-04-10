@@ -138,14 +138,47 @@ class CLI
                 output_list
             end
         elsif char.count > 1
+            sleep(1.5)
+            puts "This character has multiple versions."
+            sleep(1.5)
+            puts "All versions will be listed underneath."
+            sleep(2)
+            puts
+
             versions = []
 
             char.map.with_index(1) do |char_obj, index|
                 versions << "Version ##{index}: #{char_obj.name} - #{char_obj.location}"
             end
 
-            versions.each {|x| puts x}
-            # Need to put in an option to know more about the characters or go to the menu. 
+            versions.each {|version_info| puts version_info}
+
+            sleep(2)
+            puts
+            puts "#{@@morty}"
+            puts "If you wanna know more about a version, enter the character's version number!"
+            puts "Otherwise, you'll be returned to the menu."
+            sleep(1.5)
+            puts
+            more_input = user_input
+            # more_input = 2
+            puts
+
+            if (1..versions.length).include?(more_input) == true
+                char_ver = char[more_input-1]
+                puts "Name: ".colorize(:cyan) + "#{char_ver.name}"
+                puts "Species: ".colorize(:cyan) + "#{char_ver.species}"
+                if char_ver.type == ""
+                 puts "Current location: ".colorize(:cyan) + "#{char_ver.location}"
+                 puts "Episode count: ".colorize(:cyan) + "#{char_ver.episode.count}"
+                else
+                 puts "Type: ".colorize(:cyan) + "#{char_ver.type}"
+                 puts "Current location: ".colorize(:cyan) + "#{char_ver.location}"
+                 puts "Episode count: ".colorize(:cyan) + "#{char_ver.episode.count}"
+                end
+            else
+                menu
+            end
         elsif char.count == 1
             @inside_char = char[0]
             if @inside_char.type == ""
@@ -187,7 +220,6 @@ class CLI
         puts "Otherwise, press 'm' to be taken back to the menu."
         options_after_list
     end
-    # CODE UP TO HERE WORKS
     
     def list_directions
         sleep(2)
@@ -195,16 +227,6 @@ class CLI
         puts "To see a different character, enter a number from the same list above."
         puts "Otherwise, you can press 'm' to return back to the menu!"
         options_after_list
-        # input = user_input
-        # puts
-        # # CODE STOPS WORKING HERE
-        # if input == 1 || input == 2 || input == 3 || input == 4 || input == 5
-        #     @@char_list_input = input
-        #     options_after_list
-        # else
-        #     morty_menu_prelude
-        #     sleep(1.5)
-        #     menu 
     end
 
     def options_after_list
@@ -424,6 +446,7 @@ class CLI
     end
 
     def app
+        sleep(1.5)
         puts
         puts "GLOOTIE".bold.colorize(:green)
         puts "Do you wanna develop an app?"
@@ -457,20 +480,21 @@ class CLI
             puts "Shouldn't have developed an app..."
             sleep(2.5)
             puts
-            puts "Since you've developed a deadly app, you'll now be exited out."
+            puts "Since you've developed a deadly app, you'll be exited out now."
             sleep(3)
         elsif input == "n" || input == "no"
-            sleep(2)
+            sleep(1.5)
             puts
             puts "GLOOTIE".bold.colorize(:green)
             puts "Cool. Well, if anyone wants to develop an app with me, I'm down."
-            sleep(2)
+            sleep(2.5)
             puts
             puts "#{@@rick}"
             puts "Smart for not developing that app, #{@@name}."
             sleep(1.5)
             puts
             morty_menu_prelude
+            sleep(2)
             menu
         else
             invalid_answer
