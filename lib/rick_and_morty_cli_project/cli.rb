@@ -384,7 +384,7 @@ class CLI
         if input.length > 15
             sleep(3)
             puts
-            puts "Your request to #{input} was too difficult for your Meeseeks."
+            puts "Your request to '#{input}'' was too difficult for your Meeseeks."
             sleep(2)
             puts
             puts "MR. MEESEEKS".bold.colorize(:green)
