@@ -1,10 +1,10 @@
 class CLI
 
-    @@rick_name = "Rick"
-    @@rick = "#{@@rick_name}".upcase.bold.colorize(:green)
+    # @@rick_name = "Rick"
+    @@rick = "RICK".bold.colorize(:green)
 
-    @@morty_name = "Morty"
-    @@morty = "#{@@morty_name}".upcase.bold.colorize(:green)
+    # @@morty_name = "Morty"
+    @@morty = "MORTY".bold.colorize(:green)
 
     @@random_arr = []
     @@char_list_input = nil
@@ -103,7 +103,7 @@ class CLI
         sleep(1.5)
         puts
         puts "#{@@morty}"
-        puts "#{@@rick_name}!".upcase.bold
+        puts "RICK!".bold
         
         sleep(1)
         puts
@@ -256,6 +256,30 @@ class CLI
     end
 
     def fun
+        puts "#{@@rick}"
+        puts "Wubbalubbadubdub! They're feeling lucky today Morty! Tell them. Go on, tell them their options Morty!"
+        puts
+        puts "#{@@morty}"
+        puts "Aw jeez Rick. Why do I gotta?"
+        puts
+        puts "Option #1:".underline
+        puts "Rick created a device that brings one Rick & Morty character to life."
+        puts "Choose this option to see who you'd generate!"
+        puts
+        puts "Option #2:".colorize
+        puts "MR. MEESEEKS".bold.colorize(:cyan)
+        puts "I'm Mr. Meeseeks! Look at me!"
+        puts "Choose this option to interact with Mr. Meeseeks!"
+        puts
+        input = user_input
+        if input.include?("1")
+            fun_opt_1
+        elsif input.include?("2")
+            fun_opt_2
+        end
+    end
+
+    def fun_opt_1
     end
 
     def app
