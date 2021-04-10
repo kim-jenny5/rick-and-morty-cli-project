@@ -155,30 +155,39 @@ class CLI
 
             sleep(2)
             puts
+            puts "#{@@rick}"
+            puts "Yeah yeah yeah. There are multiple '#{input}'s across multiple universes."
+            sleep(2)
+            puts
             puts "#{@@morty}"
-            puts "If you wanna know more about a version, enter the character's version number!"
-            puts "Otherwise, you'll be returned to the menu."
-            sleep(1.5)
-            puts
-            more_input = user_input
-            # more_input = 2
-            puts
+            puts "Sigh. Okay Rick..."
+            sleep(4)
+            puts "In the meantime, let's take you back to the menu #{@@name}. Let's go!"
+            sleep(2.5)
+            menu
 
-            if (1..versions.length).include?(more_input) == true
-                char_ver = char[more_input-1]
-                puts "Name: ".colorize(:cyan) + "#{char_ver.name}"
-                puts "Species: ".colorize(:cyan) + "#{char_ver.species}"
-                if char_ver.type == ""
-                 puts "Current location: ".colorize(:cyan) + "#{char_ver.location}"
-                 puts "Episode count: ".colorize(:cyan) + "#{char_ver.episode.count}"
-                else
-                 puts "Type: ".colorize(:cyan) + "#{char_ver.type}"
-                 puts "Current location: ".colorize(:cyan) + "#{char_ver.location}"
-                 puts "Episode count: ".colorize(:cyan) + "#{char_ver.episode.count}"
-                end
-            else
-                menu
-            end
+            # puts "#{@@morty}"
+            # puts "If you wanna know more about a version, enter the character's version number!"
+            # puts "Otherwise, you'll be returned to the menu."
+            # sleep(1.5)
+            # puts
+            # more_input = user_input
+            # puts
+            # if (1..versions.length).include?(more_input) == true
+            #     char_ver = char[more_input-1]
+            #     puts "Name: ".colorize(:cyan) + "#{char_ver.name}"
+            #     puts "Species: ".colorize(:cyan) + "#{char_ver.species}"
+            #     if char_ver.type == ""
+            #      puts "Current location: ".colorize(:cyan) + "#{char_ver.location}"
+            #      puts "Episode count: ".colorize(:cyan) + "#{char_ver.episode.count}"
+            #     else
+            #      puts "Type: ".colorize(:cyan) + "#{char_ver.type}"
+            #      puts "Current location: ".colorize(:cyan) + "#{char_ver.location}"
+            #      puts "Episode count: ".colorize(:cyan) + "#{char_ver.episode.count}"
+            #     end
+            # else
+            #     menu
+            # end
         elsif char.count == 1
             @inside_char = char[0]
             if @inside_char.type == ""
@@ -232,13 +241,13 @@ class CLI
     def options_after_list
         sleep(2)
         puts
-        char_list_input = user_input.to_i
-        puts
+        char_list_input = user_input
 
-        if char_list_input == 1 || char_list_input == 2 || char_list_input == 3 || char_list_input == 4 || char_list_input == 5
-            char_index = @@random_arr[char_list_input-1]
+        if (1..5).include?(char_list_input.to_i)
+            char_index = @@random_arr[char_list_input.to_i-1]
 
             if @@random_arr.include?(char_index)
+                puts
                 character = Character.all[char_index]
                 puts "Name: ".colorize(:cyan) + "#{character.name}"
                 puts "Species: ".colorize(:cyan) + "#{character.species}"
@@ -251,12 +260,17 @@ class CLI
                     puts "Episode count: ".colorize(:cyan) + "#{character.episode.count}"
                 end
             end
+            list_directions
         elsif char_list_input == "m" || char_list_input == "menu"
+            puts
             morty_menu_prelude
             sleep(1.5)
-            menu 
+            menu
+        else
+            invalid_answer
+            options_after_list
         end
-        list_directions
+        # list_directions
         # options_after_list
     end
 
@@ -331,11 +345,12 @@ class CLI
         puts
         puts "Details:".underline
         puts "Species: #{char_generated.species}"
-        if char_generated.type == ""
-            puts "Current location: #{char_generated.location}"
-        else
+        if char_generated.type != ""
             puts "Type: #{char_generated.type}"
-            puts "Current location: #{char_generated.location}"
+            # puts "Current location: #{char_generated.location}"
+        # else
+        #     puts "Type: #{char_generated.type}"
+        #     puts "Current location: #{char_generated.location}"
         end
         if char_generated.name.include?("Jerry")
             sleep(3)
@@ -464,11 +479,11 @@ class CLI
         sleep(1.5)
         puts
         puts "If you still want to develop an app, enter 'y' for yes or 'n' for no."
-        puts
         app_input
     end
 
     def app_input
+        puts
         input = user_input
         if input == "y" || input == "yes"
             sleep(3)
