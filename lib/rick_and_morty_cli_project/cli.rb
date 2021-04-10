@@ -289,43 +289,10 @@ class CLI
     end
 
     def fun_opt_1
-        jerry = Character.all.select {|char| char.name.include?("Jerry")}
-        rand_num = rand(jerry.size)
-        char_generated = jerry[rand_num]
-
-        puts
-        puts "#{char_generated.name}".bold
-        puts
-        puts "Details:".underline
-        puts "Species: #{char_generated.species}"
-        if char_generated.type == ""
-            puts "Current location: #{char_generated.location}"
-        else
-            puts "Type: #{char_generated.type}"
-            puts "Current location: #{char_generated.location}"
-        end
-        if char_generated.name.include?("Jerry")
-            sleep(3)
-            puts
-            puts "#{@@rick}"
-            puts "HAHAHA! In fact, you can take all the infinite Jerry's!!! He's useless in every dimension. 🤨"
-            sleep(2.5)
-            puts
-            puts "#{@@morty}"
-            puts "Rick! A-a-at least leave one version of my dad for me, aw jeez."
-        end
-        sleep(2)
-        puts
-        puts "#{@@rick}"
-        puts "While I get my machine working, you should choose another option dawg."
-        sleep(2)
-        puts
-        puts "Enter 'b' to go back to see another fun option or 'm' to retun to the main menu."
-        input_for_oaf
-
-        # rand_num = rand(Character.all.size)
-        # char_generated = Character.all[rand_num]
-        # sleep(2)
+        # JERRY TEST
+        # jerry = Character.all.select {|char| char.name.include?("Jerry")}
+        # rand_num = rand(jerry.size)
+        # char_generated = jerry[rand_num]
 
         # puts
         # puts "#{char_generated.name}".bold
@@ -356,9 +323,85 @@ class CLI
         # puts
         # puts "Enter 'b' to go back to see another fun option or 'm' to retun to the main menu."
         # input_for_oaf
+
+        rand_num = rand(Character.all.size)
+        char_generated = Character.all[rand_num]
+        sleep(2)
+
+        puts
+        puts "#{char_generated.name}".bold
+        puts
+        puts "Details:".underline
+        puts "Species: #{char_generated.species}"
+        if char_generated.type == ""
+            puts "Current location: #{char_generated.location}"
+        else
+            puts "Type: #{char_generated.type}"
+            puts "Current location: #{char_generated.location}"
+        end
+        if char_generated.name.include?("Jerry")
+            sleep(3)
+            puts
+            puts "#{@@rick}"
+            puts "HAHAHA! In fact, you can take all the infinite Jerry's!!! He's useless in every dimension. 🤨"
+            sleep(2.5)
+            puts
+            puts "#{@@morty}"
+            puts "Rick! A-a-at least leave one version of my dad for me, aw jeez."
+        end
+        sleep(2)
+        puts
+        puts "#{@@rick}"
+        puts "While I get my machine working, you should choose another option dawg."
+        sleep(2)
+        puts
+        puts "Enter 'b' to go back to see another fun option or 'm' to retun to the main menu."
+        input_for_oaf
     end
 
     def fun_opt_2
+        puts "MR. MEESEEKS".bold.colorize(:green)
+        puts "Hi! I'm Mr. Meeseeks! Look at me! How can I help youuu?"
+        input = user_input
+        if input.length > 15
+            sleep(2)
+            puts "Your request was too difficult for your Meeseeks."
+            sleep(1)
+            puts
+            puts "MR. MEESEEKS".bold.colorize(:green)
+            puts "Existence is pain to a Meeseeks! I just wanna die!"
+            sleep(2)
+            puts
+            puts "Your Meeseeks doesn't want to help you anymore."
+            sleep(1)
+            puts "He's angry at you for such a difficult request and is out to get yo now."
+            sleep(1)
+            puts "You run to Rick and Morty for help."
+            sleep(2)
+            puts "🔫 🔫 🔫 pew pew *laser sounds*"
+            sleep(3)
+            puts "#{@@rick}"
+            puts "Next time, how about you keep your request to a minimum, HMMMM?"
+            sleep(1)
+            puts "Let's take you back to somewhere safe."
+            sleep(1)
+            puts
+            puts "Enter 'b' to go back to see another fun option or 'm' to retun to the main menu."
+            input_for_oaf
+        else
+            puts "MR. MEESEEKS".bold.colorize(:green)
+            puts "Hi! I'm Mr. Meeseeks! Look at me!!"
+            sleep(2)
+            puts
+            puts "MR. MEESEEKS".bold.colorize(:green)
+            puts "Allll done! I'm Mr. Meeseeks!"
+            sleep(1)
+            puts
+            puts "POOF!"
+            sleep(1)
+            puts
+            puts "Your request to #{input} has now been completed."
+        end
     end
 
     def input_for_oaf
