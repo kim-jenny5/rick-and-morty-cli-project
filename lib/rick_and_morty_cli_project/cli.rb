@@ -265,17 +265,16 @@ class CLI
         puts "#{@@morty}"
         puts "Aw jeez Rick. Why do I gotta?"
         sleep(0.5)
-        puts "Okay man. You can choose either of the options below--just enter the option number!"
-        sleep(2)
+        puts "Okay man. You can choose either of the options below--just enter the number!"
+        sleep(4)
         puts
-        puts "(1)     ".bold + "Rick created a device that brings one Rick & Morty character to life."
+        puts "(1)  ".bold + "Rick created a device that brings one Rick & Morty character to life."
+        puts "     Choose this option to see who you'd generate."
         puts
-        puts "        Choose this option to see who you'd generate!"
+        puts "(2)  ".bold + "MR. MEESEEKS".bold.colorize(:green)
+        puts "     I'm Mr. Meeseeks! Look at me!"
         puts
-        puts "(2)     ".bold + "MR. MEESEEKS".bold.colorize(:green)
-        puts "        I'm Mr. Meeseeks! Look at me!"
-        puts
-        puts "        Choose this option to interact with Mr. Meeseeks!"
+        puts "     Choose this option to interact with Mr. Meeseeks."
         puts
         input = user_input
         if input.include?("1")
@@ -286,27 +285,57 @@ class CLI
     end
 
     def fun_opt_1
-        rand_num = rand(Character.all.size)
-        char_generated = Character.all[rand_num]
-        sleep(2)
-        puts "Name: #{char_generated.name}"
+        # rand_num = rand(Character.all.size)
+        # char_generated = Character.all[rand_num]
+        # sleep(2)
+
+        jerry = Character.all.select {|char| char.name.include?("Jerry")}
+        rand_num = rand(jerry.size)
+        char_generated = jerry[rand_num]
+        # binding.pry
+
         puts
-        puts "Details:"
+        puts "#{char_generated.name}".bold
+        puts
+        puts "Details:".underline
         puts "Species: #{char_generated.species}"
         if char_generated.type == ""
-            puts "Location: #{char_generated.location}"
+            puts "Current location: #{char_generated.location}"
         else
             puts "Type: #{char_generated.type}"
-            puts "Location: #{char_generated.location}"
+            puts "Current location: #{char_generated.location}"
         end
         if char_generated.name.include?("Jerry")
-            sleep(1)
-            puts "#{@@rick}"
-            puts "HAHAHA! In fact, you can take all the infinite Jerry's!! He's useless in every dimension. 🤨"
-            sleep(1)
+            sleep(3)
             puts
+            puts "#{@@rick}"
+            puts "HAHAHA! In fact, you can take all the infinite Jerry's!!! He's useless in every dimension. 🤨"
+            sleep(2)
+            puts
+            puts "#{@@morty}"
             puts "Rick! A-a-at least leave one version of my dad for me, aw jeez."
         end
+
+
+        # puts
+        # puts "{char_generated.name}"
+        # puts
+        # puts "Details:"
+        # puts "Species: #{char_generated.species}"
+        # if char_generated.type == ""
+        #     puts "Location: #{char_generated.location}"
+        # else
+        #     puts "Type: #{char_generated.type}"
+        #     puts "Location: #{char_generated.location}"
+        # end
+        # if char_generated.name.include?("Jerry")
+        #     sleep(1)
+        #     puts "#{@@rick}"
+        #     puts "HAHAHA! In fact, you can take all the infinite Jerry's!! He's useless in every dimension. 🤨"
+        #     sleep(1)
+        #     puts
+        #     puts "Rick! A-a-at least leave one version of my dad for me, aw jeez."
+        # end
     end
 
     def app
