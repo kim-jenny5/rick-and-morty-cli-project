@@ -259,18 +259,18 @@ class CLI
         sleep(1)
         puts
         puts "#{@@rick}"
-        puts "Wubbalubbadubdub! They're feeling lucky today Morty! Tell them. Go on, tell them their options Morty!"
+        puts "Wubbalubbadubdub! Tell them, Morty. Go on, tell them their options!"
         sleep(2)
         puts
         puts "#{@@morty}"
         puts "Aw jeez Rick. Why do I gotta?"
-        sleep(0.5)
+        sleep(1)
         puts "Okay man. You can choose either of the options below--just enter the number!"
+        sleep(4)
         fun_options
     end
 
     def fun_options
-        sleep(4)
         puts
         puts "(1)  ".bold + "Rick created a device that brings one Rick & Morty character to life."
         puts "     Choose this option to see who you'd generate."
@@ -289,10 +289,6 @@ class CLI
     end
 
     def fun_opt_1
-        # rand_num = rand(Character.all.size)
-        # char_generated = Character.all[rand_num]
-        # sleep(2)
-
         jerry = Character.all.select {|char| char.name.include?("Jerry")}
         rand_num = rand(jerry.size)
         char_generated = jerry[rand_num]
@@ -313,15 +309,23 @@ class CLI
             puts
             puts "#{@@rick}"
             puts "HAHAHA! In fact, you can take all the infinite Jerry's!!! He's useless in every dimension. 🤨"
-            sleep(2)
+            sleep(2.5)
             puts
             puts "#{@@morty}"
             puts "Rick! A-a-at least leave one version of my dad for me, aw jeez."
         end
+        sleep(2)
         puts
         puts "#{@@rick}"
         puts "While I get my machine working, you should choose another option dawg."
-        options_after_fun
+        sleep(2)
+        puts
+        puts "Enter 'b' to go back to see another fun option or 'm' to retun to the main menu."
+        input_for_oaf
+
+        # rand_num = rand(Character.all.size)
+        # char_generated = Character.all[rand_num]
+        # sleep(2)
 
         # puts
         # puts "#{char_generated.name}".bold
@@ -339,33 +343,34 @@ class CLI
         #     puts
         #     puts "#{@@rick}"
         #     puts "HAHAHA! In fact, you can take all the infinite Jerry's!!! He's useless in every dimension. 🤨"
-        #     sleep(2)
+        #     sleep(2.5)
         #     puts
         #     puts "#{@@morty}"
         #     puts "Rick! A-a-at least leave one version of my dad for me, aw jeez."
         # end
+        # sleep(2)
         # puts
         # puts "#{@@rick}"
         # puts "While I get my machine working, you should choose another option dawg."
-        # options_after_fun
+        # sleep(2)
+        # puts
+        # puts "Enter 'b' to go back to see another fun option or 'm' to retun to the main menu."
+        # input_for_oaf
     end
 
     def fun_opt_2
     end
 
-    def options_after_fun
-        puts
-        puts "#{@@morty}"
-        puts "Yo, you wanna go back to see another fun option or return to the menu?"
-        puts "Enter 'b' to go back or 'm' to return to the main menu."
-        input_for_oaf
-    end
-
     def input_for_oaf
+        puts
         input = user_input
         if input == "b"
+            sleep(1)
             fun_options
         elsif input == "m"
+            sleep(1)
+            puts
+            morty_menu_prelude
             menu
         else
             invalid_answer
