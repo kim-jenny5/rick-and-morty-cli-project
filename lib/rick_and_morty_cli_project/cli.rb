@@ -1,10 +1,6 @@
 class CLI
-    # test
 
-    # @@rick_name = "Rick"
     @@rick = "RICK".bold.colorize(:green)
-
-    # @@morty_name = "Morty"
     @@morty = "MORTY".bold.colorize(:green)
 
     @@random_arr = []
@@ -271,8 +267,6 @@ class CLI
             invalid_answer
             options_after_list
         end
-        # list_directions
-        # options_after_list
     end
 
     def morty_menu_prelude
