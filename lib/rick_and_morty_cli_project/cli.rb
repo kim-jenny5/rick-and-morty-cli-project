@@ -1,4 +1,5 @@
 class CLI
+    # test
 
     # @@rick_name = "Rick"
     @@rick = "RICK".bold.colorize(:green)
