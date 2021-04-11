@@ -1,8 +1,6 @@
-# RickAndMortyCLIProject
+# Rick And Morty: A CLI Project
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rick_and_morty_cli_project`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to my project! I've based it on the television show "Rick and Morty." Through this CLI app, you'll be able to access the hundreds and hundreds of characters that are listed in the [Rick and Morty API](https://rickandmortyapi.com), as well as "interact" with the titular characters and more!
 
 ## Installation
 
@@ -22,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To start, just enter `ruby bin/run` in your terminal, after forking and accessing its directory.
+
+Once it begins, Rick and Morty should walk you through it!
 
 ## Development
 
