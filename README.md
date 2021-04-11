@@ -37,3 +37,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/kim-je
 ## Code of Conduct
 
 Everyone interacting in the Rick And Morty CLI Project project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kim-jenny5/rick_and_morty_cli_project/blob/master/CODE_OF_CONDUCT.md).
+
+## License
+
+This repo is available under the terms of the [MIT License](https://opensource.org/licenses/MIT).
