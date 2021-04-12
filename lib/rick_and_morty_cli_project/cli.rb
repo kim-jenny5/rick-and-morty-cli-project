@@ -162,29 +162,6 @@ class CLI
             puts "In the meantime, let's take you back to the menu #{@@name}. Let's go!"
             sleep(2.5)
             menu
-
-            # puts "#{@@morty}"
-            # puts "If you wanna know more about a version, enter the character's version number!"
-            # puts "Otherwise, you'll be returned to the menu."
-            # sleep(1.5)
-            # puts
-            # more_input = user_input
-            # puts
-            # if (1..versions.length).include?(more_input) == true
-            #     char_ver = char[more_input-1]
-            #     puts "Name: ".colorize(:cyan) + "#{char_ver.name}"
-            #     puts "Species: ".colorize(:cyan) + "#{char_ver.species}"
-            #     if char_ver.type == ""
-            #      puts "Current location: ".colorize(:cyan) + "#{char_ver.location}"
-            #      puts "Episode count: ".colorize(:cyan) + "#{char_ver.episode.count}"
-            #     else
-            #      puts "Type: ".colorize(:cyan) + "#{char_ver.type}"
-            #      puts "Current location: ".colorize(:cyan) + "#{char_ver.location}"
-            #      puts "Episode count: ".colorize(:cyan) + "#{char_ver.episode.count}"
-            #     end
-            # else
-            #     menu
-            # end
         elsif char.count == 1
             @inside_char = char[0]
             if @inside_char.type == ""
@@ -326,11 +303,6 @@ class CLI
     end
 
     def fun_opt_1
-        # JERRY TEST
-        # jerry = Character.all.select {|char| char.name.include?("Jerry")}
-        # rand_num = rand(jerry.size)
-        # char_generated = jerry[rand_num]
-
         rand_num = rand(Character.all.size)
         char_generated = Character.all[rand_num]
         sleep(2)
@@ -342,10 +314,6 @@ class CLI
         puts "Species: #{char_generated.species}"
         if char_generated.type != ""
             puts "Type: #{char_generated.type}"
-            # puts "Current location: #{char_generated.location}"
-        # else
-        #     puts "Type: #{char_generated.type}"
-        #     puts "Current location: #{char_generated.location}"
         end
         if char_generated.name.include?("Jerry")
             sleep(3)

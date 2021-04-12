@@ -8,7 +8,6 @@ class API
         data = JSON.parse(response)
 
         total_pages = data["info"]["pages"]
-        #total_pages = 34 (as of April 2021)
         
         page_number = 0
         until page_number == total_pages
@@ -30,6 +29,3 @@ class API
         end
     end
 end
-
-# Character.all.select {|character| character.name.include?("Beth")}
-# Character.all.select {|character| character.name == "Beth Smith"}
