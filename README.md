@@ -40,4 +40,4 @@ Everyone interacting in the Rick And Morty CLI Project project's codebases, issu
 
 ## License
 
-This repo is available under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+This gem is available under the terms of the [MIT License](https://opensource.org/licenses/MIT).
