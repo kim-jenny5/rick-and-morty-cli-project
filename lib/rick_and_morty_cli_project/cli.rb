@@ -192,6 +192,11 @@ class CLI
         end
     end
 
+    def no_type
+        puts "Name: #{@inside_char.name}"
+        puts "Species: #{@inside_char.species}"
+    end
+
     def output_list
         @@random_arr.each.with_index(1) do |object_num, index|
             character = Character.all[object_num]
@@ -201,14 +206,6 @@ class CLI
         puts
         puts "To know more about a character from this list, enter the number next to their name!"
         puts "Otherwise, press 'm' to be taken back to the menu."
-        options_after_list
-    end
-    
-    def list_directions
-        sleep(2)
-        puts
-        puts "To see a different character, enter a number from the same list above."
-        puts "Otherwise, you can press 'm' to return back to the menu!"
         options_after_list
     end
 
@@ -246,20 +243,17 @@ class CLI
         end
     end
 
+    def list_directions
+        sleep(2)
+        puts
+        puts "To see a different character, enter a number from the same list above."
+        puts "Otherwise, you can press 'm' to return back to the menu!"
+        options_after_list
+    end
+
     def morty_menu_prelude
         puts "#{@@morty}"
         puts "I'll take you back to the menu #{@@name}. Come on!"
-    end
-
-    def no_type
-        puts "Name: #{@inside_char.name}"
-        puts "Species: #{@inside_char.species}"
-    end
-
-    def invalid_answer
-        puts
-        puts "#{@@morty}"
-        puts "Sorry man. That's not an option. Choose something else? 🤷🏻‍♂️"
     end
 
     def fun
@@ -347,7 +341,7 @@ class CLI
         if input.length > 15
             sleep(3)
             puts
-            puts "Your request to '#{input}'' was too difficult for your Meeseeks."
+            puts "Your request to '#{input}' was too difficult for your Meeseeks."
             sleep(2)
             puts
             puts "MR. MEESEEKS".bold.colorize(:green)
@@ -478,6 +472,12 @@ class CLI
             invalid_answer
             app_input
         end
+    end
+
+    def invalid_answer
+        puts
+        puts "#{@@morty}"
+        puts "Sorry man. That's not an option. Choose something else? 🤷🏻‍♂️"
     end
 
     def leaves
