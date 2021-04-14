@@ -1,7 +1,5 @@
 class API
 
-    # @@all_pages = []
-
     def self.extracting_data
         base_url = "https://rickandmortyapi.com/api/character"
         response = RestClient.get(base_url)
