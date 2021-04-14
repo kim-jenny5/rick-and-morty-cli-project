@@ -1,6 +1,6 @@
 class API
 
-    @@all_pages = []
+    # @@all_pages = []
 
     def self.extracting_data
         base_url = "https://rickandmortyapi.com/api/character"
@@ -8,16 +8,18 @@ class API
         data = JSON.parse(response)
 
         total_pages = data["info"]["pages"]
-        
+
+        all_pages = []
+
         page_number = 0
         until page_number == total_pages
             page_number += 1
-            @@all_pages << "#{base_url}?page=#{page_number}"
+            all_pages << "#{base_url}?page=#{page_number}"
         end
     
         all_data = []
 
-        @@all_pages.each do |url|
+        all_pages.each do |url|
             individual_page = RestClient.get(url)
             all_data << JSON.parse(individual_page)["results"]
         end
